@@ -9,7 +9,7 @@ export default function Login() {
                     <img className='w-[100px] h-[100x] drop-shadow-[10px_10px_10px_rgba(0,0,0,0.5)]' src={logo} alt="Logo" />
                     <h1 className='font-holtwood font-black text-[48px] text-[#FFFFFF] drop-shadow-[10px_10px_10px_rgba(0,0,0,0.3)]'>Sign In</h1>
                     <form className='flex flex-col h-[100%] w-[65%] justify-around'>
-                    <div className="flex w-full justify-center items-center">
+                        <div className="flex w-full justify-center items-center">
                             <div className="w-[100%] relative">
                                 <input className="peer w-full p-4 pt-6 pl-10 pr-4 bg-inherit border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-white focus:border-blue-700" type="text" placeholder="" name="email" id="email" />
                                 <label className="absolute text-white text-base duration-150 transform -translate-y-3 top-5 z-10 origin-[0] left-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-blue-700" for="password">
