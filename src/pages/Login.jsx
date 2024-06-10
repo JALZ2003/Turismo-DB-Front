@@ -1,12 +1,12 @@
 import login from '../assets/images/login.png';
-import logo from '../assets/logo.svg';
+import logo from '/Logo_bd.svg';
 
 export default function Login() {
     return (
         <>
             <div className='w-full h-screen flex items-center justify-center'>
                 <div className='w-[35%] h-[70%] bg-[#00B4D8] bg-opacity-50 backdrop-blur-lg rounded-[10px] flex flex-col items-center shadow-[10px_10px_10px_rgba(0,0,0,0.5)]'>
-                    <img className='w-[100px] h-[100x] drop-shadow-[10px_10px_10px_rgba(0,0,0,0.5)]' src={logo} alt="Logo" />
+                    <img className='w-[120px] h-[120px] drop-shadow-[10px_10px_10px_rgba(0,0,0,0.5)]' src={logo} alt="Logo" />
                     <h1 className='font-holtwood font-black text-[48px] text-[#FFFFFF] drop-shadow-[10px_10px_10px_rgba(0,0,0,0.3)]'>Sign In</h1>
                     <form className='flex flex-col h-[100%] w-[65%] justify-around'>
                         <div className="flex w-full justify-center items-center">

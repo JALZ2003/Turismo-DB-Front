@@ -16,28 +16,28 @@ export default function PlanTuristico() {
                     <table className='w-full flex flex-col items-center'>
                     <thead className='w-[90%]'>
                             <tr className='flex justify-around items-center text-[14px] text-[#0077B6] border-b-2 border-[#0077B6] h-[45px] w-[100%]'>
-                                <th> Codigo Plan </th>
-                                <th> Titulo </th>
-                                <th> Descripcion </th>
-                                <th> Duracion en Días </th>
-                                <th> Incluye Desayuno/Almuerzo </th>
-                                <th> Incluye Alimentacion </th>
-                                <th> Estado </th>
-                                <th> Fecha Creacion </th>
-                                <th> Fecha Modificacion </th>
+                                <th className='p-4 flex justify-center w-[10%]'> Codigo Plan </th>
+                                <th className='p-4 flex justify-center w-[10%]'> Titulo </th>
+                                <th className='p-4 flex justify-center w-[10%]'> Descripcion </th>
+                                <th className='p-4 flex justify-center w-[10%]'> Duracion en Días </th>
+                                <th className='p-4 flex justify-center w-[10%]'> Incluye Desayuno/Almuerzo </th>
+                                <th className='p-4 flex justify-center w-[10%]'> Incluye Alimentacion </th>
+                                <th className='p-4 flex justify-center w-[10%]'> Estado </th>
+                                <th className='p-4 flex justify-center w-[10%]'> Fecha Creacion </th>
+                                <th className='p-4 flex justify-center w-[10%]'> Fecha Modificacion </th>
                             </tr>
                         </thead>
                         <tbody className='w-[90%]'>
                             <tr className='flex justify-around items-center text-[14px] border-b-2 border-black h-[45px] w-[100%]'>
-                                <td> P-1 </td>
-                                <td> PLAN A </td>
-                                <td> DECRIPCION DEL PLAN A </td>
-                                <td> 10 </td>
-                                <td> INCLUYE </td>
-                                <td> NO INCLUYE </td>
-                                <td> ACTIVO </td>
-                                <td> 2024-06-06 </td>
-                                <td> 2024-06-06 </td>
+                                <td className='flex justify-center w-[10%]'> P-1 </td>
+                                <td className='flex justify-center w-[10%]'> PLAN A </td>
+                                <td className='flex justify-center w-[10%]'> DECRIPCION DEL PLAN A </td>
+                                <td className='flex justify-center w-[10%]'> 10 </td>
+                                <td className='flex justify-center w-[10%]'> INCLUYE </td>
+                                <td className='flex justify-center w-[10%]'> NO INCLUYE </td>
+                                <td className='flex justify-center w-[10%]'> ACTIVO </td>
+                                <td className='flex justify-center w-[10%]'> 2024-06-06 </td>
+                                <td className='flex justify-center w-[10%]'> 2024-06-06 </td>
                             </tr>
                         </tbody>
                     </table>
