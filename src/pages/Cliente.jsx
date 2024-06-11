@@ -1,4 +1,4 @@
-import buscar from '../assets/buscar.svg';
+import Search from '../components/Search';
 
 export default function Cliente() {
     return (
@@ -6,12 +6,7 @@ export default function Cliente() {
             <h1 className='absolute w-full h-[100px] text-center text-[#005777] text-[64px]'> CLIENTE </h1>
             <main className="flex flex-col h-screen">
 
-                <div className='w-full h-[30%] flex items-center justify-center'>
-                    <div className='flex border border-[#56A6E9] w-[225px] h-[43px] rounded-[4px]'>
-                        <img className='h-[20px] w-[20px] m-2' src={buscar} alt="Buscar" />
-                        <input className='w-full h-full outline-none rounded-[4px] pb-1' type="text" placeholder='Buscar Titulos' />
-                    </div>
-                </div>
+                <Search />
                 <div className='w-full'>
                     <table className='w-full flex flex-col items-center'>
                         <thead className='w-[90%]'>
