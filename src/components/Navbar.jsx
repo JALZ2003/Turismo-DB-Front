@@ -24,6 +24,8 @@ export default function Navbar() {
             { to: '/vendedor', title: "Vendedor" },
             { to: '/cliente', title: "Cliente" },
             { to: '/detallado_compra', title: "Detallado de compra" },
+            { to: '/detalle', title: "Consolidado De Compra" },
+            { to: '/actividad_menos_in', title: "Actividades Menos Incluidas" },
         ])
     }, [])
     return (
