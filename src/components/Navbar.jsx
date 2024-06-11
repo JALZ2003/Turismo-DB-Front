@@ -26,6 +26,8 @@ export default function Navbar() {
             { to: '/detallado_compra', title: "Detallado de compra" },
             { to: '/detalle', title: "Consolidado De Compra" },
             { to: '/actividad_menos_in', title: "Actividades Menos Incluidas" },
+            { to: '/planesturisticos_Recargo', title: "Planes Turisticos Con Recargo" },
+            { to: '/planes_compro_cliente', title: "Planes Que Compro Cliente" },
         ])
     }, [])
     return (

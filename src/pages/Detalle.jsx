@@ -12,7 +12,7 @@ export default function Detalle() {
                         <thead className='w-[90%]'>
                             <tr className='flex justify-around items-center text-[14px] text-[#0077B6] border-b-2 border-[#0077B6] h-[45px] w-[100%]'>
                                 <th className='p-4 flex justify-center w-[14.2%]'> Fecha De Compra </th>
-                                <th className='p-4 flex justify-center w-[14.2%]'> Codiego Plan </th>
+                                <th className='p-4 flex justify-center w-[14.2%]'> Codigo Plan </th>
                                 <th className='p-4 flex justify-center w-[14.2%]'> Cedula </th>
                                 <th className='p-4 flex justify-center w-[14.2%]'> Nombre </th>
                                 <th className='p-4 flex justify-center w-[14.2%]'> Correo </th>
