@@ -1,7 +1,44 @@
 import login from '../assets/images/login.png';
 import logo from '/Logo_bd.svg';
+import axios from 'axios';
+import apiUrl from '../../apiUrl';
+import { useRef } from 'react';
+import Swal from 'sweetalert2';
 
 export default function Login() {
+
+    const correo = useRef();
+    const contraseña = useRef();
+
+    const signinData = () => {
+        let data = {
+            correo: correo.current.value?.trim(),
+            contraseña: contraseña.current.value?.trim(),
+        }
+        console.log(data)
+        axios.post(apiUrl + "vendedores/login", data)
+            .then((res) => {
+                localStorage.setItem("token", res.data.response.token);
+                localStorage.setItem("user", JSON.stringify(res.data.response.user));
+                console.log(res.data.response)
+            })
+            .then(() =>
+                Swal.fire({
+                    icon: "success",
+                    text: "Login success!"
+                })
+            )
+            .then(()=>window.location.replace("/"))
+            .catch((err) => Swal.fire({
+                icon: "error",
+                text: "sign in please!",
+                html: err.response.data.messages
+                  .map((each) => `<p>${each}</p>`)
+                  .join(""),
+              }))
+    }
+
+
     return (
         <>
             <div className='w-full h-screen flex items-center justify-center'>
@@ -11,7 +48,7 @@ export default function Login() {
                     <form className='flex flex-col h-[100%] w-[65%] justify-around'>
                         <div className="flex w-full justify-center items-center">
                             <div className="w-[100%] relative">
-                                <input className="peer w-full p-4 pt-6 pl-10 pr-4 bg-inherit border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-white focus:border-blue-700" type="text" placeholder="" name="email" id="email" />
+                                <input ref={correo} className="peer w-full p-4 pt-6 pl-10 pr-4 bg-inherit border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-white focus:border-blue-700" type="text" placeholder="" name="email" id="email" />
                                 <label className="absolute text-white text-base duration-150 transform -translate-y-3 top-5 z-10 origin-[0] left-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-blue-700" for="password">
                                     Email
                                 </label>
@@ -22,7 +59,7 @@ export default function Login() {
                         </div>
                         <div className="flex w-full justify-center items-center">
                             <div className="w-[100%] relative">
-                                <input className="peer w-full p-4 pt-6 pl-10 pr-4 bg-inherit border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-white focus:border-blue-700" type="text" placeholder="" name="password" id="password" />
+                                <input ref={contraseña} className="peer w-full p-4 pt-6 pl-10 pr-4 bg-inherit border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-white focus:border-blue-700" type="text" placeholder="" name="password" id="password" />
                                 <label className="absolute text-white text-base duration-150 transform -translate-y-3 top-5 z-10 origin-[0] left-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-blue-700" for="password">
                                     Password
                                 </label>
@@ -31,7 +68,7 @@ export default function Login() {
                                 </svg>
                             </div>
                         </div>
-                        <button className="self-center border hover:scale-95 duration-300 relative group cursor-pointer text-sky-50  overflow-hidden h-16 w-64 rounded-md bg-sky-200 p-2 flex justify-center items-center font-extrabold">
+                        <button onClick={signinData} type="button" className="self-center border hover:scale-95 duration-300 relative group cursor-pointer text-sky-50  overflow-hidden h-16 w-64 rounded-md bg-sky-200 p-2 flex justify-center items-center font-extrabold">
 
                             <div className="absolute right-32 -top-4  group-hover:top-1 group-hover:right-2 z-10 w-40 h-40 rounded-full group-hover:scale-150 duration-500 bg-sky-900"></div>
                             <div className="absolute right-2 -top-4  group-hover:top-1 group-hover:right-2 z-10 w-32 h-32 rounded-full group-hover:scale-150  duration-500 bg-sky-800"></div>

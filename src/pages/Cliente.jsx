@@ -1,6 +1,21 @@
 import Search from '../components/Search';
+import axios from 'axios';
+import apiUrl from '../../apiUrl';
+import { useState, useEffect } from 'react';
 
 export default function Cliente() {
+
+    const [clientes, setClientes] = useState([]);
+
+    useEffect(()=>{
+        let token = localStorage.getItem("token");
+        let headers = { headers :{Authorization: `Bearer ${token}`}};
+        axios(`${apiUrl}clientes`, headers)
+        .then((res)=>console.log(res.data.response))
+        .catch((err)=> console.log(err));
+    },[]);
+
+
     return (
         <>
             <h1 className='absolute w-full h-[100px] text-center text-[#005777] text-[64px]'> CLIENTE </h1>
