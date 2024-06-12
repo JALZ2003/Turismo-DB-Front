@@ -4,6 +4,7 @@ import apiUrl from '../../apiUrl';
 import { useState, useEffect } from 'react';
 
 
+
 export default function Tarifa() {
     const [tarifa, setTarifa] = useState([]);
 
