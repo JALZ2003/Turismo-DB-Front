@@ -7,13 +7,13 @@ export default function Cliente() {
 
     const [clientes, setClientes] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         let token = localStorage.getItem("token");
-        let headers = { headers :{Authorization: `Bearer ${token}`}};
+        let headers = { headers: { Authorization: `Bearer ${token}` } };
         axios(`${apiUrl}clientes`, headers)
-        .then((res)=>console.log(res.data.response))
-        .catch((err)=> console.log(err));
-    },[]);
+            .then((res) => setClientes(res.data.response))
+            .catch((err) => console.log(err));
+    }, []);
 
 
     return (
@@ -35,14 +35,17 @@ export default function Cliente() {
                             </tr>
                         </thead>
                         <tbody className='w-[90%]'>
-                            <tr className='flex justify-around items-center text-[14px] border-b-2 border-black h-[45px] w-[100%]'>
-                                <td className='p-4 flex justify-center w-[16.6%]'> P-1 </td>
-                                <td className='p-4 flex justify-center w-[16.6%]'> PLAN A </td>
-                                <td className='p-4 flex justify-center w-[16.6%]'> DECRIPCION DEL PLAN A </td>
-                                <td className='p-4 flex justify-center w-[16.6%]'> 10 </td>
-                                <td className='p-4 flex justify-center w-[16.6%]'> 10 </td>
-                                <td className='p-4 flex justify-center w-[16.6%]'> INCLUYE </td>
-                            </tr>
+                            {clientes.map((each, index) => {
+                                return <tr key={index} className='flex justify-around items-center text-[14px] border-b-2 border-black h-[45px] w-[100%]'>
+                                    <td className='p-4 flex justify-center w-[16.6%]'>{each.cedula}</td>
+                                    <td className='p-4 flex justify-center w-[16.6%]'>{each.nombre}</td>
+                                    <td className='p-4 flex justify-center w-[16.6%]'>{each.correo}</td>
+                                    <td className='p-4 flex justify-center w-[16.6%]'>{each.telefonos[0]}</td>
+                                    <td className='p-4 flex justify-center w-[16.6%]'>{each.telefonos[1]}</td>
+                                    <td className='p-4 flex justify-center w-[16.6%]'>{each.fecha_nacimiento}</td>
+                                </tr>
+                            }
+                            )}
                         </tbody>
                     </table>
                 </div>
