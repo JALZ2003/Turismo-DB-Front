@@ -3,9 +3,8 @@ import axios from 'axios';
 import apiUrl from '../../apiUrl';
 import { useState, useEffect } from 'react';
 
-
-
 export default function Tarifa() {
+
     const [tarifa, setTarifa] = useState([]);
 
     useEffect(() => {
@@ -18,8 +17,7 @@ export default function Tarifa() {
     return (
         <>
             <h1 className='absolute w-full h-[100px] text-center text-[#005777] text-[64px]'> TARIFA </h1>
-            <main className="flex flex-col h-screen">
-
+            <main className="flex flex-col">
                 <Search />
                 <div className='w-full'>
                     <table className='w-full flex flex-col items-center'>
