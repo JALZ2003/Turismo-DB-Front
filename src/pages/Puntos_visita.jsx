@@ -5,8 +5,8 @@ export default function Puntos_visita() {
         <>
             <h1 className='absolute w-full h-[100px] text-center text-[#005777] text-[64px]'> PUNTOS DE VISITA </h1>
             <main className="flex flex-col h-screen">
-
-                <Search/>
+                
+                <Search />
                 <div className='w-full'>
                     <table className='w-full flex flex-col items-center'>
                         <thead className='w-[90%]'>
