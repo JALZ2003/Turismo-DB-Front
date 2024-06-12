@@ -1,6 +1,17 @@
 import Search from '../components/Search';
+import axios from 'axios';
+import apiUrl from '../../apiUrl';
+import { useEffect, useState } from 'react';
+import header from '../../header.js'
 
 export default function PlanesTuristicos_Recargo() {
+const [recargo, setRecargo] = useState([]);
+useEffect(()=>{
+    axios(apiUrl+"compras/read/planesCargos",header())
+    .then((res)=>{setRecargo(res.data.response);console.log(res.data.response)})
+    .catch((err)=>console.log(err))
+},[])
+
     return (
         <>
             <h1 className='absolute w-full h-[100px] text-center text-[#005777] text-[64px]'> PLANES TURISTICOS CON RECARGO</h1>
@@ -23,17 +34,20 @@ export default function PlanesTuristicos_Recargo() {
                             </tr>
                         </thead>
                         <tbody className='w-[90%]'>
-                            <tr className='flex justify-around items-center text-[14px] border-b-2 border-black h-[45px] w-[100%]'>
-                                <td className='flex justify-center w-[10%]'> P-1 </td>
-                                <td className='flex justify-center w-[10%]'> PLAN A </td>
-                                <td className='flex justify-center w-[10%]'> DECRIPCION DEL PLAN A </td>
-                                <td className='flex justify-center w-[10%]'> 10 </td>
-                                <td className='flex justify-center w-[10%]'> INCLUYE </td>
-                                <td className='flex justify-center w-[10%]'> NO INCLUYE </td>
-                                <td className='flex justify-center w-[10%]'> ACTIVO </td>
-                                <td className='flex justify-center w-[10%]'> 2024-06-06 </td>
-                                <td className='flex justify-center w-[10%]'> 2024-06-06 </td>
-                            </tr>
+                            {recargo.map((each, index) => {
+                                return <tr key={index} className='flex justify-around items-center text-[14px] border-b-2 border-black w-[100%]'>
+                                    <td className='p-4 flex justify-center w-[14.2%]'>{each.codigo_plan}</td>
+                                    <td className='p-4 flex justify-center w-[14.2%]'>{each.titulo_plan}</td>
+                                    <td className='p-4 flex justify-center w-[14.2%]'>{each.descripcion_plan}</td>
+                                    <td className='p-4 flex justify-center w-[14.2%]'>{each.cantidad_dias_duracion}</td>
+                                    <td className='p-4 flex justify-center w-[14.2%]'>{each.desayuno_almuerzo ? "SI" : "NO"}</td>
+                                    <td className='p-4 flex justify-center w-[14.2%]'>{each.alimentacion ? "SI" : "NO"}</td>
+                                    <td className='p-4 flex justify-center w-[14.2%]'>{each.estado ? "ACTIVO" : "INACTIVO"}</td>
+                                    <td className='p-4 flex justify-center w-[14.2%]'>{each.fecha_creacion}</td>
+                                    <td className='p-4 flex justify-center w-[14.2%]'>{each.fecha_modificacion}</td>
+                                </tr>
+                            }
+                            )}
                         </tbody>
                     </table>
                 </div>
