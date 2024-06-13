@@ -2,9 +2,11 @@ import Search from '../components/Search';
 import axios from 'axios';
 import apiUrl from '../../apiUrl';
 import { useState, useEffect } from 'react';
+import FormCliente from '../components/FormCliente';
 
 export default function Puntos_visita() {
 const [visita, setVisita] = useState([]);
+const [formCliente,setFormCliente] = useState(false);
 
 useEffect(() => {
     let token = localStorage.getItem("token");
@@ -16,6 +18,7 @@ useEffect(() => {
 
     return (
         <>
+         {formCliente && (<FormCliente setFormCliente={setFormCliente} formCliente={formCliente} />)}
             <h1 className='absolute w-full h-[100px] text-center text-[#005777] text-[64px]'> PUNTOS DE VISITA </h1>
             <main className="flex flex-col h-screen">
                 
@@ -32,6 +35,7 @@ useEffect(() => {
                                 <th className='p-4 flex justify-center w-[12.5%]'> Estado </th>
                                 <th className='p-4 flex justify-center w-[12.5%]'> Fecha Creacion </th>
                                 <th className='p-4 flex justify-center w-[12.5%]'> Fecha Modificacion </th>
+                                <th className='p-4 flex justify-center w-[12.5%]'> Acciones </th>
                             </tr>
                         </thead>
                         <tbody className='w-[90%]'>
@@ -45,6 +49,10 @@ useEffect(() => {
                                 <td className='p-4 flex justify-center w-[12.5%]'>{each.estado ? "ACTIVO":"INACTIVO"}</td>
                                 <td className='p-4 flex justify-center w-[12.5%]'>{each.fecha_creacion}</td>
                                 <td className='p-4 flex justify-center w-[12.5%]'>{each.fecha_modificacion}</td>
+                                <td className='p-4 flex justify-center w-[12.5%]'>
+                                        <div onClick={() => setFormCliente(!formCliente)} className='bg-cyan-500 hover:cursor-pointer text-white p-2 rounded-md hover:scale-110'>Editar</div>
+                                        <div className='bg-red-500 hover:cursor-pointer text-white p-2 rounded-md hover:scale-110 ms-1'>Borrar</div>
+                                    </td>
                             </tr>
                             }
                             )}

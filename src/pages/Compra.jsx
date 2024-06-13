@@ -2,10 +2,12 @@ import Search from '../components/Search';
 import axios from 'axios';
 import apiUrl from '../../apiUrl';
 import { useEffect, useState } from 'react';
+import FormCliente from '../components/FormCliente';
 
 
 export default function Compra() {
     const [compra, setCompra] = useState([]);
+    const [formCliente,setFormCliente] = useState(false);
 
     useEffect(() => {
         let token = localStorage.getItem("token");
@@ -17,6 +19,7 @@ export default function Compra() {
 
     return (
         <>
+         {formCliente && (<FormCliente setFormCliente={setFormCliente} formCliente={formCliente} />)}
             <h1 className='absolute w-full h-[100px] text-center text-[#005777] text-[64px]'> COMPRA </h1>
             <main className="flex flex-col h-screen">
 
@@ -32,6 +35,7 @@ export default function Compra() {
                                 <th className='p-4 flex justify-center w-[14.2%]'> Total Compra </th>
                                 <th className='p-4 flex justify-center w-[14.2%]'> Id Cliente </th>
                                 <th className='p-4 flex justify-center w-[14.2%]'> Id vendesdor </th>
+                                <th className='p-4 flex justify-center w-[14.2%]'> Acciones </th>
                             </tr>
                         </thead>
                         <tbody className='w-[90%]'>
@@ -44,6 +48,10 @@ export default function Compra() {
                                     <td className='p-4 flex justify-center w-[14.2%]'>{each.total_compra}</td>
                                     <td className='p-4 flex justify-center w-[14.2%]'>{each.id_cliente}</td>
                                     <td className='p-4 flex justify-center w-[14.2%]'>{each.id_vendedor}</td>
+                                    <td className='p-4 flex justify-center w-[14.2%]'>
+                                        <div onClick={() => setFormCliente(!formCliente)} className='bg-cyan-500 hover:cursor-pointer text-white p-2 rounded-md hover:scale-110'>Editar</div>
+                                        <div className='bg-red-500 hover:cursor-pointer text-white p-2 rounded-md hover:scale-110 ms-1'>Borrar</div>
+                                    </td>
                                 </tr>
                             }
                             )}

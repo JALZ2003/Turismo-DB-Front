@@ -1,8 +1,10 @@
 
-export default function FormCliente() {
+export default function FormCliente({setFormCliente}) {
     return (
-        <>
-            <div className="flex w-full justify-center items-center">
+        <div className="bg-slate-500 w-[100%] h-[100%] absolute inset-0 flex flex-col justify-center items-center bg-opacity-60 z-20">
+            <div className="w-[90%] flex flex-col justify-center items-center bg-blue-300 h-[80%] rounded-lg">
+                <dir className="text-5xl text-white">EDITAR</dir>
+            <div className="flex justify-center items-cente w-[50%]">
                 <div className="w-[100%] relative">
                     <input className="peer w-full p-4 pt-6 pl-10 pr-4 bg-inherit border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-white focus:border-blue-700" type="number" placeholder="" name="cedula" id="cedula" />
                     <label className="absolute text-white text-base duration-150 transform -translate-y-3 top-5 z-10 origin-[0] left-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-blue-700" for="cedula">
@@ -13,7 +15,7 @@ export default function FormCliente() {
                     </svg>
                 </div>
             </div>
-            <div className="flex w-full justify-center items-center">
+            <div className="flex w-[50%] justify-center items-center">
                 <div className="w-[100%] relative">
                     <input className="peer w-full p-4 pt-6 pl-10 pr-4 bg-inherit border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-white focus:border-blue-700" type="text" placeholder="" name="nombre" id="nombre" />
                     <label className="absolute text-white text-base duration-150 transform -translate-y-3 top-5 z-10 origin-[0] left-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-blue-700" for="nombre">
@@ -24,7 +26,7 @@ export default function FormCliente() {
                     </svg>
                 </div>
             </div>
-            <div className="flex w-full justify-center items-center">
+            <div className="flex w-[50%] justify-center items-center">
                 <div className="w-[100%] relative">
                     <input className="peer w-full p-4 pt-6 pl-10 pr-4 bg-inherit border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-white focus:border-blue-700" type="text" placeholder="" name="correo" id="correo" />
                     <label className="absolute text-white text-base duration-150 transform -translate-y-3 top-5 z-10 origin-[0] left-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-blue-700" for="correo">
@@ -35,7 +37,7 @@ export default function FormCliente() {
                     </svg>
                 </div>
             </div>
-            <div className="flex w-full justify-center items-center">
+            <div className="flex w-[50%] justify-center items-center">
                 <div className="w-[100%] relative">
                     <input className="peer w-full p-4 pt-6 pl-10 pr-4 bg-inherit border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-white focus:border-blue-700" type="number" placeholder="" name="telefono#1" id="telefono#1" />
                     <label className="absolute text-white text-base duration-150 transform -translate-y-3 top-5 z-10 origin-[0] left-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-blue-700" for="telefono#1">
@@ -46,7 +48,7 @@ export default function FormCliente() {
                     </svg>
                 </div>
             </div>
-            <div className="flex w-full justify-center items-center">
+            <div className="flex w-[50%] justify-center items-center">
                 <div className="w-[100%] relative">
                     <input className="peer w-full p-4 pt-6 pl-10 pr-4 bg-inherit border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-white focus:border-blue-700" type="number" placeholder="" name="telefono#2" id="telefono#2" />
                     <label className="absolute text-white text-base duration-150 transform -translate-y-3 top-5 z-10 origin-[0] left-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-blue-700" for="telefono#2">
@@ -57,7 +59,7 @@ export default function FormCliente() {
                     </svg>
                 </div>
             </div>
-            <div className="flex w-full justify-center items-center">
+            <div className="flex w-[50%] justify-center items-center">
                 <div className="w-[100%] relative">
                     <input className="peer w-full p-4 pt-6 pl-10 pr-4 bg-inherit border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-white focus:border-blue-700" type="text" placeholder="" name="fechanacimiento" id="fechanacimiento" />
                     <label className="absolute text-white text-base duration-150 transform -translate-y-3 top-5 z-10 origin-[0] left-10 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:text-blue-700" for="fechanacimiento">
@@ -68,6 +70,9 @@ export default function FormCliente() {
                     </svg>
                 </div>
             </div>
-        </>
+            <button onClick={() => setFormCliente(false)} type="button" className="mt-9 bg-lime-300 p-3 rounded-md font-bold text-blue-600 hover:scale-110">Guardar</button>
+            </div>
+            
+        </div>
     )
 }
