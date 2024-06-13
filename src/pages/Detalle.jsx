@@ -1,12 +1,24 @@
+import { useEffect, useState } from 'react';
 import Search from '../components/Search';
+import axios from 'axios';
+import apiUrl from '../../apiUrl';
+import header from '../../header';
 
 export default function Detalle() {
+
+    const [consolidados, setConsolidados] = useState([]);
+    useEffect(() => {
+        axios.get(`${apiUrl}compras/read/consolidados`, header()).then((res) => {
+            setConsolidados(res.data.response)
+        });
+    }, [])
+
     return (
         <>
             <h1 className='absolute w-full h-[100px] text-center text-[#005777] text-[64px]'> CONSOLIDADO DE COMPRA </h1>
             <main className="flex flex-col h-screen">
 
-                <Search/>
+                <Search />
                 <div className='w-full'>
                     <table className='w-full flex flex-col items-center'>
                         <thead className='w-[90%]'>
@@ -22,16 +34,18 @@ export default function Detalle() {
                             </tr>
                         </thead>
                         <tbody className='w-[90%]'>
-                            <tr className='flex justify-around items-center text-[14px] border-b-2 border-black h-[45px] w-[100%]'>
-                                <td className='p-4 flex justify-center w-[12.5%]'> P-1 </td>
-                                <td className='p-4 flex justify-center w-[12.5%]'> PLAN A </td>
-                                <td className='p-4 flex justify-center w-[12.5%]'> DECRIPCION DEL PLAN A </td>
-                                <td className='p-4 flex justify-center w-[12.5%]'> 10 </td>
-                                <td className='p-4 flex justify-center w-[12.5%]'> INCLUYE </td>
-                                <td className='p-4 flex justify-center w-[12.5%]'> NO INCLUYE </td>
-                                <td className='p-4 flex justify-center w-[12.5%]'> adfed </td>
-                                <td className='p-4 flex justify-center w-[12.5%]'> adfed </td>
-                            </tr>
+                            {consolidados.map((consolidado, index) => {
+                                return <tr key={index} className='flex justify-around items-center text-[14px] border-b-2 border-black h-[45px] w-[100%]'>
+                                    <td className='p-4 flex justify-center w-[12.5%]'> {consolidado.fecha_compra} </td>
+                                    <td className='p-4 flex justify-center w-[12.5%]'> {consolidado.codigo_plan} </td>
+                                    <td className='p-4 flex justify-center w-[12.5%]'> {consolidado.cedula} </td>
+                                    <td className='p-4 flex justify-center w-[12.5%]'> {consolidado.nombre} </td>
+                                    <td className='p-4 flex justify-center w-[12.5%]'> {consolidado.correo} </td>
+                                    <td className='p-4 flex justify-center w-[12.5%]'> {consolidado.fecha_nacimiento} </td>
+                                    <td className='p-4 flex justify-center w-[12.5%]'> {consolidado.telefonos[0]} </td>
+                                    <td className='p-4 flex justify-center w-[12.5%]'> {consolidado.telefonos[1]} </td>
+                                </tr>
+                            })}
                         </tbody>
                     </table>
                 </div>

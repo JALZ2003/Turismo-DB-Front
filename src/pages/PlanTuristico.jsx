@@ -26,7 +26,7 @@ export default function PlanTuristico() {
         {formCliente && (<FormCliente setFormCliente={setFormCliente} formCliente={formCliente} />)}
             <h1 className='absolute w-full h-[100px] text-center text-[#005777] text-[64px]'> PLANES TURISTICOS </h1>
             <main className="flex flex-col">
-                <Search puntos={false} activo={activo} setActivo={setActivo} setTitulo={setTitulo} search={search} almuerzo={almuerzo} setAlmuerzo={setAlmuerzo}/>
+                <Search visible={true} puntos={false} activo={activo} setActivo={setActivo} setTitulo={setTitulo} search={search} almuerzo={almuerzo} setAlmuerzo={setAlmuerzo}/>
                 <div className='w-full'>
                     <table className='w-full flex flex-col items-center'>
                         <thead className='w-[90%]'>
