@@ -46,30 +46,32 @@ export default function Navbar() {
         if (user) {
             if (user.usuario === "vendedor") {
                 setOption([
-                    { to: '/', title: "Inicio" },
                     { to: '/planTuristico', title: "Plan turistico" },
                     { to: '/cliente', title: "Cliente" },
                     { to: '/compra', title: "Compra" },
+                    { to: '/detalle', title: "Consolidado De Compra" },
+                    { to: '/actividad_menos_in', title: "Actividades Menos Incluidas" },
+                    { to: '/planesturisticos_Recargo', title: "Planes Turisticos Con Recargo" },
+                    { to: '/planes_compro_cliente', title: "Planes Que Compro Cliente" },
                     { to: '/signin', title: "Sign Out", onClick: signout },
                 ])
             } else if (user.usuario === "superadmin") {
                 setOption([
-                    { to: '/', title: "Inicio" },
                     { to: '/planTuristico', title: "Plan turistico" },
                     { to: '/puntos_visita', title: "Puntos de visita" },
                     { to: '/tarifa', title: "Tarifa" },
                     { to: '/vendedor', title: "Vendedor" },
                     { to: '/compra', title: "Compra" },
-                    { to: '/signin', title: "Sign Out", onClick: signout },
                     { to: '/detalle', title: "Consolidado De Compra" },
                     { to: '/actividad_menos_in', title: "Actividades Menos Incluidas" },
                     { to: '/planesturisticos_Recargo', title: "Planes Turisticos Con Recargo" },
                     { to: '/planes_compro_cliente', title: "Planes Que Compro Cliente" },
+                    { to: '/signin', title: "Sign Out", onClick: signout },
+                    
                 ])
             }
         } else {
             setOption([
-                { to: '/', title: "Inicio" },
                 { to: '/planTuristico', title: "Plan turistico" },
                 { to: '/puntos_visita', title: "Puntos de visita" },
                 { to: '/tarifa', title: "Tarifa" },

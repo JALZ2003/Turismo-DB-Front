@@ -28,7 +28,7 @@ export default function Login() {
                     text: "Login success!"
                 })
             )
-            .then(()=>window.location.replace("/"))
+            .then(()=>window.location.replace("/planTuristico"))
             .catch((err) => Swal.fire({
                 icon: "error",
                 text: "sign in please!",
@@ -36,6 +36,7 @@ export default function Login() {
                   .map((each) => `<p>${each}</p>`)
                   .join(""),
               }))
+              ;
     }
 
 

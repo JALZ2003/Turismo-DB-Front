@@ -1,11 +1,14 @@
 import Search from '../components/Search';
 import axios from 'axios';
 import apiUrl from '../../apiUrl';
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
+import FormCliente from "../components/FormCliente.jsx"
 
 export default function Cliente() {
 
     const [clientes, setClientes] = useState([]);
+
+    const [formCliente,setFormCliente] = useState(false);
 
     useEffect(() => {
         let token = localStorage.getItem("token");
@@ -15,9 +18,9 @@ export default function Cliente() {
             .catch((err) => console.log(err));
     }, []);
 
-
     return (
         <>
+        {formCliente && (<FormCliente setFormCliente={setFormCliente} formCliente={formCliente} />)}
             <h1 className='absolute w-full h-[100px] text-center text-[#005777] text-[64px]'> CLIENTE </h1>
             <main className="flex flex-col h-screen">
 
@@ -32,6 +35,7 @@ export default function Cliente() {
                                 <th className='p-4 flex justify-center w-[16.6%]'> Telefono #1 </th>
                                 <th className='p-4 flex justify-center w-[16.6%]'> Telefono #2 </th>
                                 <th className='p-4 flex justify-center w-[16.6%]'> Fecha De Nacimiento </th>
+                                <th className='p-4 flex justify-center w-[16.6%]'> Acciones </th>
                             </tr>
                         </thead>
                         <tbody className='w-[90%]'>
@@ -43,6 +47,10 @@ export default function Cliente() {
                                     <td className='p-4 flex justify-center w-[16.6%]'>{each.telefonos[0]}</td>
                                     <td className='p-4 flex justify-center w-[16.6%]'>{each.telefonos[1]}</td>
                                     <td className='p-4 flex justify-center w-[16.6%]'>{each.fecha_nacimiento}</td>
+                                    <td className='p-4 flex justify-center w-[16.6%]'>
+                                        <div onClick={() => setFormCliente(!formCliente)} className='bg-cyan-500 hover:cursor-pointer text-white p-2 rounded-md hover:scale-110'>Editar</div>
+                                        <div className='bg-red-500 hover:cursor-pointer text-white p-2 rounded-md hover:scale-110 ms-1'>Borrar</div>
+                                    </td>
                                 </tr>
                             }
                             )}

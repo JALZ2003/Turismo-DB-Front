@@ -3,21 +3,24 @@ import axios from 'axios';
 import apiUrl from '../../apiUrl';
 import { useEffect, useState } from 'react';
 import header from '../../header.js'
+import FormCliente from '../components/FormCliente.jsx';
 
 export default function PlanesTuristicos_Recargo() {
-const [recargo, setRecargo] = useState([]);
-useEffect(()=>{
-    axios(apiUrl+"compras/read/planesCargos",header())
-    .then((res)=>{setRecargo(res.data.response);console.log(res.data.response)})
-    .catch((err)=>console.log(err))
-},[])
+    const [recargo, setRecargo] = useState([]);
+    const [formCliente, setFormCliente] = useState(false);
+    useEffect(() => {
+        axios(apiUrl + "compras/read/planesCargos", header())
+            .then((res) => { setRecargo(res.data.response); console.log(res.data.response) })
+            .catch((err) => console.log(err))
+    }, [])
 
     return (
         <>
+            {formCliente && (<FormCliente setFormCliente={setFormCliente} formCliente={formCliente} />)}
             <h1 className='absolute w-full h-[100px] text-center text-[#005777] text-[64px]'> PLANES TURISTICOS CON RECARGO</h1>
             <main className="flex flex-col h-screen">
 
-                <Search/>
+                <Search />
                 <div className='w-full'>
                     <table className='w-full flex flex-col items-center'>
                         <thead className='w-[90%]'>
@@ -31,6 +34,7 @@ useEffect(()=>{
                                 <th className='p-4 flex justify-center w-[10%]'> Estado </th>
                                 <th className='p-4 flex justify-center w-[10%]'> Fecha Creacion </th>
                                 <th className='p-4 flex justify-center w-[10%]'> Fecha Modificacion </th>
+                                <th className='p-4 flex justify-center w-[10%]'> Acciones </th>
                             </tr>
                         </thead>
                         <tbody className='w-[90%]'>
@@ -45,6 +49,10 @@ useEffect(()=>{
                                     <td className='p-4 flex justify-center w-[14.2%]'>{each.estado ? "ACTIVO" : "INACTIVO"}</td>
                                     <td className='p-4 flex justify-center w-[14.2%]'>{each.fecha_creacion}</td>
                                     <td className='p-4 flex justify-center w-[14.2%]'>{each.fecha_modificacion}</td>
+                                    <td className='p-4 flex justify-center w-[14.2%]'>
+                                        <div onClick={() => setFormCliente(!formCliente)} className='bg-cyan-500 hover:cursor-pointer text-white p-2 rounded-md hover:scale-110'>Editar</div>
+                                        <div className='bg-red-500 hover:cursor-pointer text-white p-2 rounded-md hover:scale-110 ms-1'>Borrar</div>
+                                    </td>
                                 </tr>
                             }
                             )}
