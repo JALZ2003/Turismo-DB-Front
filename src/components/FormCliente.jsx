@@ -3,7 +3,7 @@ export default function FormCliente({setFormCliente}) {
     return (
         <div className="bg-slate-500 w-[100%] h-[100%] absolute inset-0 flex flex-col justify-center items-center bg-opacity-60 z-20">
             <div className="w-[90%] flex flex-col justify-center items-center bg-blue-300 h-[80%] rounded-lg">
-                <dir className="text-5xl text-white">EDITAR</dir>
+                <div className="text-5xl text-white">EDITAR</div>
             <div className="flex justify-center items-cente w-[50%]">
                 <div className="w-[100%] relative">
                     <input className="peer w-full p-4 pt-6 pl-10 pr-4 bg-inherit border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed border-white focus:border-blue-700" type="number" placeholder="" name="cedula" id="cedula" />
@@ -71,8 +71,7 @@ export default function FormCliente({setFormCliente}) {
                 </div>
             </div>
             <button onClick={() => setFormCliente(false)} type="button" className="mt-9 bg-lime-300 p-3 rounded-md font-bold text-blue-600 hover:scale-110">Guardar</button>
-            </div>
-            
+            </div>   
         </div>
     )
 }
